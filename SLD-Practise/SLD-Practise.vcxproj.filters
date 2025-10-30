@@ -56,5 +56,11 @@
     <ClInclude Include="source\ImageObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\RenderManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

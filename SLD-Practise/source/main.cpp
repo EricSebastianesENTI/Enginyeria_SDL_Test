@@ -2,9 +2,13 @@
 #include <exception>
 #include <SDL3/SDL.h>
 #include "Game.h"
+#include "RenderManager.h"
 
 int main()
 {
+	RM->SayHi();
+
+
 	Game game;
 
 	try

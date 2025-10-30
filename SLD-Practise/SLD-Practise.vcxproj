@@ -32,7 +32,9 @@
     <ClInclude Include="source\ImageObject.h" />
     <ClInclude Include="source\ImageRenderer.h" />
     <ClInclude Include="source\Renderer.h" />
+    <ClInclude Include="source\RenderManager.h" />
     <ClInclude Include="source\TextRenderer.h" />
+    <ClInclude Include="source\Transform.h" />
     <ClInclude Include="source\Vector2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
