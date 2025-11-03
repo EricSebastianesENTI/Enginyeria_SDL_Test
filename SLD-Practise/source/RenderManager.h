@@ -36,7 +36,7 @@ private:
 	RenderManager() = default;
 	RenderManager(RenderManager&) = delete;
 	RenderManager& operator=(const RenderManager&) = delete;
-	~RenderManager() {} 
+	~RenderManager();
 
 	SDL_Window* _window;
 	SDL_Renderer* _renderer;

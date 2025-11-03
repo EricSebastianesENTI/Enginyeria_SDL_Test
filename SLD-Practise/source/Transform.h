@@ -7,6 +7,7 @@ public:
 	Vector2 position;
 	float rotation;
 	Vector2 scale;
+	Vector2 size;
 
 	Transform() : position(Vector2(0.f, 0.f)), rotation(0.f), scale(Vector2(1.f, 1.f)) {}
 
