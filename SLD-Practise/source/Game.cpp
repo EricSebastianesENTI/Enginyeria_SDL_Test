@@ -1,28 +1,23 @@
 #include "Game.h"
 #include "ImageObject.h"
+#include "RenderManager.h"
+#include "InputManager.h"
 
 void Game::Init()
 {
-	InitSDL();
-	CreateWindowAndRenderer();
+	 RM->Init();
+	 RM->LoadTexture("resources/image.png ");
+		 _isRunning = true;
 
-	SDL_SetRenderDrawColor(_renderer, 225, 0, 0, 0xFF);
-
-	_isRunning = true;
-	_gameObjects.push_back(new ImageObject("resources/image.png", _renderer));
+		 TestObject* test1 = new TestObject();
+		 _gameObjects.push_back(test1);
+		  TestObject* test2 = new TestObject();
+		  _gameObjects.push_back(test2);
 }
 
 void Game::HandleEvents()
 {
-	SDL_Event event;
-
-	while (SDL_PollEvent(&event))
-	{
-		if (event.type == SDL_EVENT_QUIT)
-		{
-			_isRunning = false;
-		}
-	}
+	_isRunning = !IM->Listen();
 }
 
 void Game::Update()
@@ -31,18 +26,24 @@ void Game::Update()
 	{
 		go->Update();
 	}
+
+	if(IM->GetEvent(SDLK_S, KeyState::DOWN))
+	{
+		for (Object* go : _gameObjects)
+		{
+			go->GetTransform()->position.y += 0.05;
+		}
+	}
 }
 
 void Game::Render()
 {
-	SDL_RenderClear(_renderer);
+	 RM->ClearScreen();
 	
-	for (Object* go : _gameObjects)
-	{
-		go->Render(_renderer);
-	}
-
-	SDL_RenderPresent(_renderer);
+	 for (Object* go : _gameObjects)
+		 go->Render();
+	
+	 RM->RenderScreen();
 }
 
 void Game::Release()

@@ -2,6 +2,8 @@
 #include "Object.h"
 #include <SDL3/SDL.h>
 #include <vector>
+#include "RenderManager.h"
+#include "TestObject.h"
 
 class Game
 {

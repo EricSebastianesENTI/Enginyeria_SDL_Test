@@ -1,8 +1,11 @@
 #pragma once
-#include "Vector2.h"
+/*#include "Vector2.h"
 #include "Transform.h"
 #include <SDL3/SDL.h>
 #include <string>
+#include "Renderer.h"*/
+
+#include "Transform.h"
 #include "Renderer.h"
 
 class Object
@@ -15,18 +18,18 @@ protected:
 	Transform* _transform;
 
 public:
-	Object()
+		 Object()
 		 {
-		 _transform = new Transform();
+			 _transform = new Transform();
 		 }
 	
 		 ~Object()
 		 {
-		 delete _transform;
-		 _transform = nullptr;
+			delete _transform;
+			_transform = nullptr;
 		
 			 delete _renderer;
-		 _renderer = nullptr;
+			 _renderer = nullptr;
 		 }
 	
 		 virtual void Update()
@@ -36,7 +39,7 @@ public:
 	
 		 virtual void Render()
 		 {
-		 _renderer->Render();
+			 _renderer->Render();
 		 }
 	
 		 Transform * GetTransform() { return _transform; }

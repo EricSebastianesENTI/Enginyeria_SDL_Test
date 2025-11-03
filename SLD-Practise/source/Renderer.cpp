@@ -2,7 +2,7 @@
 #include <SDL3_image/SDL_image.h>
 #include <cassert>
 
-void Renderer::Update()
+void Renderer::Update(float dt)
 {
 	//...
 }

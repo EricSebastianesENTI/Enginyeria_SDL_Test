@@ -40,9 +40,9 @@ private:
 
 	SDL_Window* _window;
 	SDL_Renderer* _renderer;
-	std::map<std::string, SDL_Texture*> _textures;
 
 	void InitSDL();
 	void CreateWindowAndRenderer();
+	std::map<std::string, SDL_Texture*> _textures;
 
 };
