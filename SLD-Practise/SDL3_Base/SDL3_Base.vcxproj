@@ -19,14 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\AABB.cpp" />
     <ClCompile Include="source\Game.cpp" />
     <ClCompile Include="source\ImageRenderer.cpp" />
     <ClCompile Include="source\InputManager.cpp" />
     <ClCompile Include="source\Main.cpp" />
     <ClCompile Include="source\RenderManager.cpp" />
+    <ClCompile Include="source\Rigidbody.cpp" />
     <ClCompile Include="source\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\AABB.h" />
     <ClInclude Include="source\Game.h" />
     <ClInclude Include="source\GameObject.h" />
     <ClInclude Include="source\ImageObject.h" />
@@ -34,6 +37,7 @@
     <ClInclude Include="source\InputManager.h" />
     <ClInclude Include="source\Renderer.h" />
     <ClInclude Include="source\RenderManager.h" />
+    <ClInclude Include="source\Rigidbody.h" />
     <ClInclude Include="source\TestObject.h" />
     <ClInclude Include="source\Transform.h" />
     <ClInclude Include="source\Vector2.h" />

@@ -1,6 +1,7 @@
 #pragma once
 #include "ImageObject.h"
 #include "RenderManager.h"
+#include "InputManager.h"
 class TestObject : public ImageObject
 {
 public:
@@ -11,5 +12,22 @@ public:
 		_transform->position = randomPosition;
 		_transform->scale = Vector2(0.5f, 0.5f);
 		_transform->rotation = 30.0f;
+
+		_physics->SetLinearDrag(0.1f);
+		_physics->SetAngularDrag(0.2f);
 	}
+	void Update() override
+	{
+		if (IM->GetEvent(SDLK_S, DOWN))
+		{
+			 _physics->AddForce(Vector2(0.f, 60.f));
+		}
+		else if (IM->GetEvent(SDLK_R, DOWN))
+		{
+			 _physics->AddTorque(200.f);
+		}
+
+		Object::Update();
+	}
+
 };
