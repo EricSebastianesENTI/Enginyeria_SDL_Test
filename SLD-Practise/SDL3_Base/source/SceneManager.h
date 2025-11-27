@@ -45,7 +45,7 @@ public:
 	}
 
 	Scene* GetCurrentScene() const { return _currentScene; }
-	bool setNextScene(std::string name)
+	bool SetNextScene(std::string name)
 	{
 		if (_scenes.find(name) == _scenes.end())
 		{

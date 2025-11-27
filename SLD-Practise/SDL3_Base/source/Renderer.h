@@ -20,7 +20,7 @@ public:
 	{
 		_destinationRect = rect;
 	}
-	void SetColor(SDL_Color color)
+	virtual void SetColor(SDL_Color color)
 	{
 		_color = color;
 	}

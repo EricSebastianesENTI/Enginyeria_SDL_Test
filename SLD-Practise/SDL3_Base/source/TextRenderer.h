@@ -70,4 +70,10 @@ public:
 		// 5) Actualitzar string
 			_text = text;
 	}
+
+	void SetColor(SDL_Color color) override
+	{
+		Renderer::SetColor(color);
+		SetText(_text);
+	}
 };

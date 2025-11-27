@@ -13,7 +13,7 @@ public:
 			SPAWNER.SpawnObject(new TestObject());
 			SPAWNER.SpawnObject(new TestObject());
 
-			TextObject* text = new TextObject("Hola");
+			TextObject* text = new TextObject("Borren Arduino");
 			text->GetTransform()->position = { 100.f, 100.f };
 			_ui.push_back(text);
 		}

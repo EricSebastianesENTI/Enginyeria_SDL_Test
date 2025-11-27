@@ -9,7 +9,6 @@ class Object
 private:
 	bool _isPendingDestroy = false;
 protected:
-	//Vector2 _position;
 	Renderer* _renderer = nullptr;
 	Transform* _transform;
 	RigidBody* _physics;
@@ -40,7 +39,7 @@ public:
 		_renderer->Update(0.02f); 
 	}
 
-	void Render() { _renderer->Render(); }
+	virtual void Render() { _renderer->Render(); }
 	Transform* GetTransform() { return _transform; } // De momento no hace nada
 	RigidBody* GetRigidBody() { return _physics; } // De momento no hace nada
 	bool IsPendingDestroy() const { return _isPendingDestroy; }
