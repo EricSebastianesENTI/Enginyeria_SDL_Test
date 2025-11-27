@@ -3,13 +3,10 @@
 #include <exception>
 #include "Game.h"
 #include "RenderManager.h"
+#include "TimeManager.h"
 int main()
 {
-
-	RM->SayHi();
-
-
-	
+	RM->SayHi();	
 	Game game;
 
 	try
@@ -22,13 +19,17 @@ int main()
 		game.Realease();
 		return -1;
 	}
-
 	while (game.isRunning())
 	{
-		game.HandleEvents();
-		game.Update();
-		game.Render();
-		
+		TIME.Update();
+		//std::cout << TIME.GetDeltaTime() << std::endl;
+		if (TIME.ShouldUpdateGame())
+		{
+			game.HandleEvents();
+			game.Update();
+			game.Render();
+			TIME.ResetDeltaTime();
+		}
 	}
 	game.Realease();
 	

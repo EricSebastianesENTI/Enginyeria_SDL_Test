@@ -24,6 +24,15 @@ void RenderManager::LoadTexture(std::string path)
 	_textures[path] = IMG_LoadTexture(_renderer, path.c_str());
 	assert(_textures[path]);
 }
+
+TTF_Font* RenderManager::GetFont(std::string path)
+{
+	if (_fonts.find(path) != _fonts.end())
+		return _fonts[path];
+
+	return nullptr;
+}
+
 RenderManager::~RenderManager()
 {
 	for (std::map<std::string, SDL_Texture*>::iterator it = _textures.begin(); it != _textures.end(); ++it)
@@ -31,12 +40,23 @@ RenderManager::~RenderManager()
 		SDL_DestroyTexture(it->second);
 		it->second = nullptr;
 	}
+
+	for (std::map<std::string, TTF_Font*>::iterator it = _fonts.begin(); it != _fonts.end(); ++it)
+	{
+		TTF_CloseFont(it->second);
+		it->second = nullptr;
+	}
 }
+
 void RenderManager::InitSDL()
 {
 	if (!SDL_Init(SDL_INIT_VIDEO))
 		throw SDL_GetError();
+
+	if (!TTF_Init())
+		throw SDL_GetError();
 }
+
 void RenderManager::CreateWindowAndRenderer()
 {
 	if (!SDL_CreateWindowAndRenderer("Test main", WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE ,&_window, &_renderer))
@@ -55,11 +75,21 @@ void RenderManager::Init()
 		Release();
 		return;
 	}
-	SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 0xFF);
+	SDL_SetRenderDrawColor(_renderer, 255, 255, 255, 0xFF);
 }
 SDL_Texture* RenderManager::GetTexture(std::string path)
 {
 	if(_textures.find(path) != _textures.end())
 		return _textures[path];
 	return nullptr;
+}
+
+void RenderManager::LoadFont(std::string path)
+{
+	if (_fonts.find(path) != _fonts.end())
+	{
+		return;
+	}
+
+	_fonts[path] = TTF_OpenFont(path.c_str(), 24);
 }

@@ -22,7 +22,7 @@ public:
 		{
 			 _physics->AddForce(Vector2(0.f, 60.f));
 		}
-		else if (IM->GetEvent(SDLK_R, DOWN))
+		else if (IM->GetEvent(SDLK_R, HOLD))
 		{
 			 _physics->AddTorque(200.f);
 		}

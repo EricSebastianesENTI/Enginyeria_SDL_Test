@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL3/SDL.h>
+#include <SDL3_ttf/SDL_ttf.h>
 #include <map>
 #include <string>
 #include <iostream>
@@ -19,7 +20,7 @@ public:
 	const unsigned int WINDOW_HEIGHT = 768;
 	void SayHi()
 	{
-		std::cout << "HIIIII";
+		std::cout << "HI";
 	}
 
 	void Init();
@@ -31,6 +32,10 @@ public:
 	void LoadTexture(std::string path);
 	SDL_Texture* GetTexture(std::string path);
 
+	void LoadFont(std::string path);
+
+	TTF_Font* GetFont(std::string path);
+
 private:
 	RenderManager() = default;
 	RenderManager(RenderManager&) = default;
@@ -40,8 +45,8 @@ private:
 	SDL_Window* _window;
 	SDL_Renderer* _renderer;
 	std::map<std::string, SDL_Texture*> _textures;
+	std::map<std::string, TTF_Font*> _fonts;
 
 	void InitSDL();
 	void CreateWindowAndRenderer();
-
 };

@@ -1,18 +1,22 @@
 #include "Game.h"
-#include "ImageObject.h"
 #include "RenderManager.h"
-#include "TestObject.h"
 #include "InputManager.h"
+#include "SceneManager.h"
+#include "Gameplay.h"
+#include <cassert>
 void Game::Init()
 {
 	RM->Init();
-	RM->LoadTexture("resources/xd.png");
-	TestObject* test1 = new TestObject();
-	_gameObjects.push_back(test1);
-	TestObject* test2 = new TestObject();
-	_gameObjects.push_back(test2);
-	_isRunning = true;
 
+	// Aquí la càrrega de tots els recursos del joc
+	RM->LoadTexture("resources/xd.png");
+	RM->LoadFont("resources/fonts/hyperspace.ttf");
+	
+	// Aquí la càrrega de totes les escenes
+	assert(SM.AddScene("Gameplay", new Gameplay()));
+	assert(SM.InitFirstScene("Gameplay"));
+
+	_isRunning = true;
 }
 
 void Game::InitSDL()
@@ -29,10 +33,7 @@ void Game::HandleEvents()
 }
 void Game::Update()
 {
-	for (Object* go : _gameObjects)
-	{
-		go->Update();
-	}
+	SM.UpdateCurrentScene();
 	if (IM->GetEvent(SDLK_S, DOWN))
 	{
 		
@@ -42,10 +43,8 @@ void Game::Render()
 {
 	RM->ClearScreen();
 
-	for (Object* go : _gameObjects)
-	{
-		go->Render();
-	}
+	SM.GetCurrentScene()->Render();
+
 	RM->RendeScreen();
 }
 void Game::Realease()
